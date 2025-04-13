@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Caluspire.Application.Commands;
+using Caluspire.Application.Queries;
 
 [ApiController]
 [Route("api/[controller]")]

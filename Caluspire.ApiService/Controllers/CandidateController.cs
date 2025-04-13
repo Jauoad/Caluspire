@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Caluspire.Application.Commands;
+using Caluspire.Application.Queries;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -28,4 +30,14 @@ public class CandidateController : ControllerBase
         var candidate = await _mediator.Send(query);
         return Ok(candidate);
     }
+
+    [HttpGet("status/{candidateId}")]
+    public async Task<IActionResult> GetApplicationStatus(int candidateId)
+    {
+        var query = new GetJobApplicationStatusQuery();
+        query.CandidateId = candidateId;
+        var status = await _mediator.Send(query);
+        return Ok(status);
+    }
+
 }
