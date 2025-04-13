@@ -23,10 +23,6 @@ public static class Extensions
 
         builder.Services.AddServiceDiscovery();
 
-        //builder.Services.AddMediatR(typeof(Program).Assembly);
-        //builder.Services.AddScoped<IJobRepository, JobRepository>();
-        //builder.Services.AddScoped<JobApplicationNotifier>();
-
         builder.Services.ConfigureHttpClientDefaults(http =>
         {
             // Turn on resilience by default

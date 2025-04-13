@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Caluspire.Domain.Repositories
+namespace Caluspire.Application.Repositories
 {
     public interface ICandidateRepository
     {

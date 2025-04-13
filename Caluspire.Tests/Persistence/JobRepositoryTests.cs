@@ -1,27 +1,31 @@
-namespace Caluspire.Tests;
+using Xunit;
+using Moq;
+using Caluspire.Domain.Entities;
+using Caluspire.Infrastructure.Persistence;
+using Caluspire.Infrastructure;
 
-[TestClass]
-public class JobRepositoryTests
+namespace Caluspire.Tests
 {
-    private readonly JobRepository _jobRepository;
-    private readonly Mock<ApplicationDbContext> _mockContext;
-
-    public JobRepositoryTests()
+    public class JobRepositoryTests
     {
-        _mockContext = new Mock<ApplicationDbContext>();
-        _jobRepository = new JobRepository(_mockContext.Object);
-    }
+        private readonly JobRepository _jobRepository;
+        private readonly Mock<ApplicationDbContext> _mockContext;
 
-    [Fact]
-    public async Task GetByIdAsync_ShouldReturnJob()
-    {
-        var job = new Job(1, "Software Engineer");
-        _mockContext.Setup(m => m.Jobs.FindAsync(It.IsAny<int>())).ReturnsAsync(job);
+        public JobRepositoryTests()
+        {
+            _mockContext = new Mock<ApplicationDbContext>();
+            _jobRepository = new JobRepository(_mockContext.Object);
+        }
 
-        var result = await _jobRepository.GetByIdAsync(1);
+        [Fact]
+        public async Task GetByIdAsync_ShouldReturnJob()
+        {
+            var job = new Job(1, "Software Engineer", ".NET Engineer");
+            _mockContext.Setup(m => m.Jobs.FindAsync(It.IsAny<int>())).ReturnsAsync(job);
+            var result = await _jobRepository.GetJobByIdAsync(1);
 
-        Assert.NotNull(result);
-        Assert.Equal("Software Engineer", result.Title);
+            Xunit.Assert.NotNull(result);
+            Xunit.Assert.Equal("Software Engineer", result.Title);
+        }
     }
 }
-

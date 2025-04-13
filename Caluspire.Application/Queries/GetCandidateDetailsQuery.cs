@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Caluspire.Infrastructure.Persistence
+namespace Caluspire.Application.Queries
 {
-    internal class CandidateRepository
+    public class GetCandidateDetailsQuery
     {
+        public int CandidateId { get; set; }
     }
 }

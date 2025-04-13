@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net.Http;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Caluspire.Web.Models;
 
@@ -17,7 +19,18 @@ namespace Caluspire.Web.Controllers
         public async Task<IActionResult> Index()
         {
             var response = await _httpClient.GetAsync("https://localhost:5001/api/jobs");
-            var jobs = await response.Content.ReadAsAsync<IEnumerable<JobApplicationViewModel>>();
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return View("Error"); // Tu peux ajouter une vue d’erreur
+            }
+
+            var jsonString = await response.Content.ReadAsStringAsync();
+
+            var jobs = JsonSerializer.Deserialize<IEnumerable<JobApplicationViewModel>>(jsonString, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
 
             return View(jobs);
         }

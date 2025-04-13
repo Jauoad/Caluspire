@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Caluspire.Application.Commands;
+using Caluspire.Application.Repositories;
+using Caluspire.Domain.Entities;
+using MediatR;
 
 namespace Caluspire.Application.Handlers
 {
-    using Caluspire.Application.Commands;
-    using MediatR;
-
-    public class SubmitJobApplicationCommandHandler : IRequestHandler<SubmitJobApplicationCommand>
+    public class SubmitJobApplicationCommandHandler : IRequestHandler<SubmitJobApplicationCommand, bool>
     {
         private readonly IJobRepository _jobRepository;
 
@@ -18,14 +14,33 @@ namespace Caluspire.Application.Handlers
             _jobRepository = jobRepository;
         }
 
-        public async Task<Unit> Handle(SubmitJobApplicationCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(SubmitJobApplicationCommand request, CancellationToken cancellationToken)
         {
-            var job = await _jobRepository.GetByIdAsync(request.JobId);
-            var candidate = new Candidate(request.CandidateId, request.CandidateName, request.CandidateSkills);
+            var job = await _jobRepository.GetJobByIdAsync(request.JobId);
+            if (job == null)
+            {
+                return false;
+            }
+
+            var existingCandidate = job.Candidates.FirstOrDefault(c => c.CandidateId == request.CandidateId);
+            if (existingCandidate != null)
+            {
+                return false;
+            }
+
+            var candidate = new Candidate(
+                request.CandidateId,
+                request.CandidateName,
+                request.CandidateSkills,
+                request.CoverLetter,
+                request.Resume
+            );
+
             job.AddCandidate(candidate);
             await _jobRepository.SaveChangesAsync();
-            return Unit.Value;
-        }
-    }
 
+            return true;
+        }
+
+    }
 }

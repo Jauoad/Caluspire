@@ -5,16 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Caluspire.Domain.Repositories
+namespace Caluspire.Application.Repositories
 {
     public interface IJobRepository
     {
         Task<Job> GetJobByIdAsync(int jobId);
-
-        Task AddAsync(Job job);
         Task SaveChangesAsync();
+        Task<List<Job>> GetAllAsync();
+        Task<bool> SubmitApplicationAsync(int candidateId, int jobId, string coverLetter, string resume);
         Task<IEnumerable<Job>> GetAllJobsAsync();
-
+        Task AddAsync(Job job);
     }
-
 }
