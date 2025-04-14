@@ -1,3 +1,7 @@
+## License
+
+This project is licensed under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) License - see the [LICENSE](LICENSE) file for details.
+
 # 📦 Caluspire
 
 **Caluspire** is a modern, scalable, and modular job application platform built with **.NET Aspire**. It leverages clean architecture principles, CQRS, DDD, SignalR, and GraphQL to deliver a flexible backend for managing job postings and applications.
