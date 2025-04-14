@@ -43,36 +43,30 @@
 ---
 
 ## 📂 Project Structure Overview
-Caluspire/
-│
-├── Caluspire.ApiService/         # 📡 Exposes REST APIs, GraphQL (HotChocolate), and SignalR Hubs
-│   └── Program.cs                # Configures endpoints, Mediator, GraphQL, SignalR
-│
-├── Caluspire.Application/        # 🧠 Contains business logic and application rules
-│   ├── Commands/                 # Commands for write operations (CQRS)
-│   ├── Queries/                  # Queries for read operations (CQRS)
-│   ├── Handlers/                # MediatR handlers that process commands and queries
-│   ├── DTOs/                     # Data Transfer Objects for API/GraphQL communication
-│   └── Repositories/            # Abstractions for persistence layer
-│
-├── Caluspire.Domain/             # 📘 Domain layer following DDD
-│   ├── Entities/                # Aggregates like Job and Candidate
-│   └── Repositories/            # Interfaces like IJobRepository, decoupled from infrastructure
-│
-├── Caluspire.Infrastructure/     # 🏗️ Implements EF Core persistence and repositories
-│   ├── Persistence/             # DbContext + repository classes using EF Core
-│   └── Repositories/            # Concrete repository implementations
-│
-├── Caluspire.Web/                # 🌐 Frontend application placeholder (for Blazor or React)
-│   └── (empty for now)          # Future UI development
-│
-├── Caluspire.ServiceDefaults/    # ⚙️ Reusable service registration defaults for Aspire
-│
-├── Caluspire.AppHost/            # 🚀 App hosting configuration using .NET Aspire
-│   └── Program.cs               # Application orchestration and startup
-│
-└── Caluspire.Tests/              # ✅ Unit/integration tests (to be implemented)
-    └── ExampleTest.cs           # Placeholder for future tests
+
+- **Caluspire/**
+  - **Caluspire.ApiService/** 📡 Exposes REST APIs, GraphQL (HotChocolate), and SignalR Hubs
+    - `Program.cs`: Configures endpoints, Mediator, GraphQL, SignalR
+  - **Caluspire.Application/** 🧠 Contains business logic and application rules
+    - **Commands/**: Commands for write operations (CQRS)
+    - **Queries/**: Queries for read operations (CQRS)
+    - **Handlers/**: MediatR handlers that process commands and queries
+    - **DTOs/**: Data Transfer Objects for API/GraphQL communication
+    - **Repositories/**: Abstractions for persistence layer
+  - **Caluspire.Domain/** 📘 Domain layer following DDD
+    - **Entities/**: Aggregates like Job and Candidate
+    - **Repositories/**: Interfaces like IJobRepository, decoupled from infrastructure
+  - **Caluspire.Infrastructure/** 🏗️ Implements EF Core persistence and repositories
+    - **Persistence/**: DbContext + repository classes using EF Core
+    - **Repositories/**: Concrete repository implementations
+  - **Caluspire.Web/** 🌐 Frontend application placeholder (for Blazor or React)
+    - *(empty for now)*: Future UI development
+  - **Caluspire.ServiceDefaults/** ⚙️ Reusable service registration defaults for Aspire
+  - **Caluspire.AppHost/** 🚀 App hosting configuration using .NET Aspire
+    - `Program.cs`: Application orchestration and startup
+  - **Caluspire.Tests/** ✅ Unit/integration tests (to be implemented)
+    - `WebTests.cs`: Placeholder for future tests
+
 
 ---
 
