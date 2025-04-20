@@ -20,6 +20,7 @@ This project is licensed under the Creative Commons Attribution-NonCommercial 4.
 | `Caluspire.AppHost`       | Hosting entry point (via .NET Aspire)                                       |
 | `Caluspire.ServiceDefaults`| Shared service configurations for Aspire ecosystem                          |
 | `Caluspire.Tests`         | Unit and integration test support                                           |
+| `Caluspire.AI`            | AI and Machine Learning for data processing, predictions, model integration |
 
 ---
 
@@ -33,6 +34,8 @@ This project is licensed under the Creative Commons Attribution-NonCommercial 4.
 | **HotChocolate**    | GraphQL for .NET                          |
 | **SignalR**         | Real-time notifications for applications |
 | **Minimal API**     | Lightweight REST setup in ASP.NET Core   |
+| **ML.NET**          | Machine Learning tools for building AI models and predictions |
+
 
 ---
 
@@ -70,6 +73,11 @@ This project is licensed under the Creative Commons Attribution-NonCommercial 4.
     - `Program.cs`: Application orchestration and startup
   - **Caluspire.Tests/** ✅ Unit/integration tests (to be implemented)
     - `WebTests.cs`: Placeholder for future tests
+ - **Caluspire.AI/** App for AI/ML models and algorithms for advanced decision-making
+   - **Data/**: Contains raw data input and pre-processing tools used by ML models
+   - **Helpers/**: Includes helper functions to aid with model training, evaluation, and testing
+   - **Models/**: Stores machine learning models, including trained models, algorithms, and configurations
+   - **Services/**: Provides services for running AI models, predictions, and managing model life cycle
 
 
 ---
