@@ -1,5 +1,4 @@
 using Caluspire.ApiService.GraphQL.Queries;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Caluspire.Infrastructure;
 using Caluspire.Infrastructure.Repositories;
@@ -18,7 +17,10 @@ builder.AddServiceDefaults();
 
 builder.Services.AddProblemDetails();
 builder.Services.AddOpenApi();
-builder.Services.AddMediatR(typeof(Program));
+builder.Services.AddMediatR(config =>
+{
+    config.RegisterServicesFromAssembly(typeof(Program).Assembly);
+});
 
 builder.Services.AddScoped<IJobRepository, JobRepository>();
 builder.Services.AddScoped<ICandidateRepository, CandidateRepository>();
