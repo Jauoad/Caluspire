@@ -1,7 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Caluspire.Domain.Entities;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using Caluspire.Domain.Entities;
 
 namespace Caluspire.Infrastructure
 {
@@ -19,6 +22,11 @@ namespace Caluspire.Infrastructure
         {
             base.OnModelCreating(modelBuilder);
 
+            var skillsComparer = new ValueComparer<List<string>>(
+                (c1, c2) => c1.SequenceEqual(c2),
+                c => c.Aggregate(0, (a, v) => HashCode.Combine(a, v.GetHashCode())),
+                c => c.ToList());
+
             modelBuilder.Entity<Job>(entity =>
             {
                 entity.HasKey(j => j.Id);
@@ -35,7 +43,6 @@ namespace Caluspire.Infrastructure
                       .HasForeignKey(c => c.JobId)
                       .OnDelete(DeleteBehavior.Cascade);
             });
-
             modelBuilder.Entity<Candidate>(entity =>
             {
                 entity.HasKey(c => c.CandidateId);
@@ -50,8 +57,8 @@ namespace Caluspire.Infrastructure
                 entity.Property(c => c.Skills)
                       .HasConversion(
                           v => string.Join(',', v),
-                          v => v.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList()
-                      );
+                          v => v.Split(',', StringSplitOptions.RemoveEmptyEntries).ToList())
+                      .Metadata.SetValueComparer(skillsComparer);
             });
         }
     }
