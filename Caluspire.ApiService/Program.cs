@@ -10,6 +10,7 @@ using Caluspire.Application.Handlers;
 using Caluspire.Application.DTOs;
 using Caluspire.ApiService.GraphQL.Hubs;
 using Caluspire.Application.Queries;
+using Caluspire.AI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,6 +37,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseInMemoryDatabase("JobApplicationDb");
 });
+
+builder.Services.AddSingleton<MLModelService>();
 
 var app = builder.Build();
 

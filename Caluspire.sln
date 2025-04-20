@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35514.174 d17.12
+VisualStudioVersion = 17.12.35514.174
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caluspire.AppHost", "Caluspire.AppHost\Caluspire.AppHost.csproj", "{2FB3CFAB-4CF9-4576-A0D8-546597C187CC}"
 EndProject
@@ -17,6 +17,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caluspire.Application", "Caluspire.Application\Caluspire.Application.csproj", "{F80EDCFE-BE12-4A9E-8BC2-DDA2B9D7E079}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caluspire.Infrastructure", "Caluspire.Infrastructure\Caluspire.Infrastructure.csproj", "{6213CDF6-A8E1-4A8E-BF7B-61896C24EA29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caluspire.AI", "Caluspire.AI\Caluspire.AI.csproj", "{2520F62E-A698-4469-BFDA-AE819882D9DF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +58,10 @@ Global
 		{6213CDF6-A8E1-4A8E-BF7B-61896C24EA29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6213CDF6-A8E1-4A8E-BF7B-61896C24EA29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6213CDF6-A8E1-4A8E-BF7B-61896C24EA29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2520F62E-A698-4469-BFDA-AE819882D9DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2520F62E-A698-4469-BFDA-AE819882D9DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2520F62E-A698-4469-BFDA-AE819882D9DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2520F62E-A698-4469-BFDA-AE819882D9DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

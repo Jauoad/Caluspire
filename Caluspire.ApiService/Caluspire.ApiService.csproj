@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Caluspire.AI\Caluspire.AI.csproj" />
     <ProjectReference Include="..\Caluspire.Application\Caluspire.Application.csproj" />
     <ProjectReference Include="..\Caluspire.Domain\Caluspire.Domain.csproj" />
     <ProjectReference Include="..\Caluspire.Infrastructure\Caluspire.Infrastructure.csproj" />
@@ -26,6 +27,10 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Configuration\" />
   </ItemGroup>
 
 </Project>
