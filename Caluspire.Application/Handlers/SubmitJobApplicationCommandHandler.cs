@@ -1,7 +1,7 @@
 ﻿using Caluspire.Application.Commands;
-using Caluspire.Application.Repositories;
 using Caluspire.Domain.Entities;
 using MediatR;
+using Caluspire.Domain.Repositories;
 
 namespace Caluspire.Application.Handlers
 {

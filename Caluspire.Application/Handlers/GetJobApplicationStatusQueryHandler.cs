@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Caluspire.Application.Queries;
-using Caluspire.Application.Repositories;
 using Caluspire.Application.DTOs;
 using MediatR;
+using Caluspire.Domain.Repositories;
 
 namespace Caluspire.Application.Handlers
 {
