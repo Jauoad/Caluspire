@@ -49,8 +49,10 @@ builder.Services
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     // options.UseInMemoryDatabase("JobApplicationDb");
-
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseNpgsql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        npgsqlOptions => npgsqlOptions.SetPostgresVersion(16, 0)
+    );
 });
 
 builder.Services.AddSingleton<MLModelService>();
