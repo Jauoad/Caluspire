@@ -6,7 +6,6 @@ namespace Caluspire.Web.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-        // GET: api/home
         [HttpGet]
         public IActionResult GetMessage()
         {

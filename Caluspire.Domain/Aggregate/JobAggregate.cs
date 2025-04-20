@@ -11,6 +11,11 @@ namespace Caluspire.Domain.Aggregate
     {
         public int JobId { get; private set; }
         public string Title { get; private set; }
+        public string Location { get; set; }
+        public string Description { get; set; }
+        public string Category { get; set; }
+        public string Status { get; set; }
+
         private readonly List<Candidate> _candidates = new List<Candidate>();
         public IReadOnlyList<Candidate> Candidates => _candidates.AsReadOnly();
 

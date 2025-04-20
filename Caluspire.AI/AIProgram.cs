@@ -10,7 +10,6 @@ class AIProgram
         var modelPath = "model.zip";
         var modelService = new MLModelService();
 
-        // Option 1: Train the model from in-memory data (for testing)
         var trainingData = new List<JobData>
         {
             new JobData { YearsOfExperience = 5, DesiredSalary = 50000, OfferedSalary = 48000, JobType = "CDI" },

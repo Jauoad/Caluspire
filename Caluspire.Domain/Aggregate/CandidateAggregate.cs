@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Caluspire.Domain.Aggregate
 {
-    internal class CandidateAggregate
+    public class CandidateAggregate
     {
     }
 }

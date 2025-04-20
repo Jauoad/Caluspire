@@ -22,7 +22,7 @@ namespace Caluspire.Web.Controllers
 
             if (!response.IsSuccessStatusCode)
             {
-                return View("Error"); // Tu peux ajouter une vue d’erreur
+                return View("Error");
             }
 
             var jsonString = await response.Content.ReadAsStringAsync();

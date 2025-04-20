@@ -4,7 +4,6 @@ function Home() {
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-        // Appel à l'API backend (ex: https://localhost:7010/api/home) pour récupérer un message
         fetch('https://localhost:7010/api/home')
             .then(response => response.json())
             .then(data => setMessage(data.message))

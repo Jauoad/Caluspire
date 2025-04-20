@@ -10,6 +10,9 @@ using Caluspire.Application.DTOs;
 using Caluspire.ApiService.GraphQL.Hubs;
 using Caluspire.Application.Queries;
 using Caluspire.AI.Services;
+using Caluspire.Domain.Aggregate;
+using AutoMapper;
+using Caluspire.Application.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,8 +30,11 @@ builder.Services.AddScoped<ICandidateRepository, CandidateRepository>();
 
 builder.Services.AddScoped<IRequestHandler<SubmitJobApplicationCommand, bool>, SubmitJobApplicationCommandHandler>();
 builder.Services.AddScoped<IRequestHandler<GetJobApplicationStatusQuery, ApplicationStatusDto>, GetJobApplicationStatusQueryHandler>();
+builder.Services.AddScoped<IRequestHandler<GetJobsQuery, List<Job>>, GetJobsQueryHandler>();
 
 builder.Services.AddSignalR();
+
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
 builder.Services
     .AddGraphQLServer()
