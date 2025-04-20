@@ -34,6 +34,7 @@ This project is licensed under the Creative Commons Attribution-NonCommercial 4.
 | **HotChocolate**    | GraphQL for .NET                          |
 | **SignalR**         | Real-time notifications for applications |
 | **Minimal API**     | Lightweight REST setup in ASP.NET Core   |
+| **React**                | Frontend framework for building user interfaces            |
 | **PostgreSQL**      | Relational database system used for data storage           |
 | **AutoMapper**      | Object-object mapping to streamline data transfer          |
 | **ML.NET**          | Machine Learning tools for building AI models and predictions |
