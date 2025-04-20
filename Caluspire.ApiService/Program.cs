@@ -11,10 +11,15 @@ using Caluspire.ApiService.GraphQL.Hubs;
 using Caluspire.Application.Queries;
 using Caluspire.AI.Services;
 using Caluspire.Domain.Aggregate;
-using AutoMapper;
 using Caluspire.Application.Mappings;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
+    .AddEnvironmentVariables();
 
 builder.AddServiceDefaults();
 
@@ -43,12 +48,20 @@ builder.Services
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseInMemoryDatabase("JobApplicationDb");
+    // options.UseInMemoryDatabase("JobApplicationDb");
+
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 builder.Services.AddSingleton<MLModelService>();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    dbContext.Database.Migrate();
+}
 
 app.UseExceptionHandler();
 
