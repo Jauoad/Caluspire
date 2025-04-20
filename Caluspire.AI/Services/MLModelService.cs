@@ -39,5 +39,15 @@ namespace Caluspire.AI.Services
             var prediction = predictionFunction.Predict(inputData);
             return prediction.CompatibilityScore;
         }
+        public void TrainFromFile(string filePath)
+        {
+            var data = _mlContext.Data.LoadFromTextFile<JobData>(filePath, hasHeader: true, separatorChar: ',');
+            var pipeline = _mlContext.Transforms.Categorical.OneHotEncoding("JobType")
+                .Append(_mlContext.Transforms.Concatenate("Features", "YearsOfExperience", "DesiredSalary", "OfferedSalary", "JobType"))
+                .Append(_mlContext.Regression.Trainers.Sdca(labelColumnName: "OfferedSalary"));
+
+            _model = pipeline.Fit(data);
+        }
+
     }
 }

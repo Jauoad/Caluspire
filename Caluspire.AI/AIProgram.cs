@@ -7,7 +7,10 @@ class AIProgram
 {
     static void Main(string[] args)
     {
-        // training the model
+        var modelPath = "model.zip";
+        var modelService = new MLModelService();
+
+        // Option 1: Train the model from in-memory data (for testing)
         var trainingData = new List<JobData>
         {
             new JobData { YearsOfExperience = 5, DesiredSalary = 50000, OfferedSalary = 48000, JobType = "CDI" },
@@ -17,19 +20,17 @@ class AIProgram
             new JobData { YearsOfExperience = 10, DesiredSalary = 60000, OfferedSalary = 58000, JobType = "CDI" }
         };
 
-        var modelService = new MLModelService();
-
-        Console.WriteLine("Training the model...");
+        Console.WriteLine("Training the model using in-memory data...");
         modelService.TrainModel(trainingData);
-        Console.WriteLine("Model trained successfully!");
-
-        var modelPath = "model.zip";
         ModelHelper.SaveModel(modelService, modelPath);
-        Console.WriteLine($"Model saved to file: {modelPath}");
+        Console.WriteLine($"Model trained and saved to: {modelPath}");
 
-        Console.WriteLine("Loading the model...");
+        Console.WriteLine("Retraining model from CSV file...");
+        modelService.TrainFromFile("Data/JobData.csv");
+        ModelHelper.SaveModel(modelService, modelPath);
+        Console.WriteLine("Model retrained from CSV and saved successfully!");
+
         ModelHelper.LoadModel(modelService, modelPath);
-        Console.WriteLine("Model loaded successfully!");
 
         var newJobData = new InputData
         {
@@ -39,10 +40,7 @@ class AIProgram
             JobType = "CDI"
         };
 
-        Console.WriteLine("Making prediction...");
         var prediction = modelService.Predict(newJobData);
         Console.WriteLine($"Predicted compatibility score: {prediction}");
     }
 }
-
-

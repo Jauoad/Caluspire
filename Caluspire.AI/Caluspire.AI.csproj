@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\JobData.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Data\JobData.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.ML" Version="4.0.2" />
   </ItemGroup>
 
