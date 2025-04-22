@@ -13,12 +13,12 @@ namespace Caluspire.Tests.Commands
 {
     public class SubmitJobApplicationCommandHandlerTests
     {
-        private readonly Mock<Application.Repositories.IJobRepository> _mockJobRepository;
+        private readonly Mock<Domain.Repositories.IJobRepository> _mockJobRepository;
         private readonly SubmitJobApplicationCommandHandler _handler;
 
         public SubmitJobApplicationCommandHandlerTests()
         {
-            _mockJobRepository = new Mock<Application.Repositories.IJobRepository>();
+            _mockJobRepository = new Mock<Domain.Repositories.IJobRepository>();
             _handler = new SubmitJobApplicationCommandHandler(_mockJobRepository.Object);
         }
 
