@@ -28,7 +28,7 @@ This project is licensed under the Creative Commons Attribution-NonCommercial 4.
 
 | Stack               | Description                               |
 |---------------------|-------------------------------------------|
-| **.NET 8 + Aspire** | Modern .NET microservice hosting          |
+| **.NET 8/9 + Aspire** | Modern .NET microservice hosting          |
 | **MediatR**         | CQRS and in-process messaging              |
 | **Entity Framework Core** | ORM with in-memory DB (demo)          |
 | **HotChocolate**    | GraphQL for .NET                          |
